@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+nul
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Claude / AI workspace
+.claude/
+CLAUDE.md
+
+# Development artifacts — root-level MD files from generation process
+plan.md
+PHASE1_COMPLETE.md
+COMPLETION_SUMMARY.md
+IMPLEMENTATION_SUMMARY.md
+CRYPTO_IMPLEMENTATION.md
+FILE_TRANSFER_README.md
+FORWARDING_IMPLEMENTATION.md
+TRANSPORT_README.md
+TRANSPORT_SUMMARY.md
+INTEGRATION.md
+DIAGNOSTICS.md
+QUICKSTART_DIAGNOSTICS.md
+QUICKSTART.md
+QUICK_START.md
+FIXES_APPLIED.md
+README_MESH.md
+CRYPTO_FILES.txt
+test_peer.py
+
+# Subsystem READMEs in umesh/ (internal dev docs)
+umesh/README_FAST.md
+umesh/README_DUPLICATE.md
+umesh/peer_README.md
+umesh/NEIGHBOR_README.md
+umesh/FORWARD_README.md
+umesh/AODV_README.md
+umesh/RPC_README.md
+umesh/CRYPTO_README.md
+umesh/utils_README.md
