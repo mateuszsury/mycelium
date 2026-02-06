@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 520" width="700" height="520">
+  <defs>
+    <linearGradient id="archBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29"/>
+      <stop offset="100%" style="stop-color:#24243e"/>
+    </linearGradient>
+    <!-- Layer gradients (bottom=physical to top=application) -->
+    <linearGradient id="l1Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#e74c3c;stop-opacity:0.08"/>
+    </linearGradient>
+    <linearGradient id="l2Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e67e22;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#e67e22;stop-opacity:0.08"/>
+    </linearGradient>
+    <linearGradient id="l3Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f1c40f;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#f1c40f;stop-opacity:0.08"/>
+    </linearGradient>
+    <linearGradient id="l4Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2ecc71;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#2ecc71;stop-opacity:0.08"/>
+    </linearGradient>
+    <linearGradient id="l5Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#667eea;stop-opacity:0.08"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="700" height="520" rx="12" fill="url(#archBg)"/>
+
+  <!-- Title -->
+  <text x="350" y="38" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#e0e0f0" text-anchor="middle" letter-spacing="0.5">Protocol Architecture</text>
+
+  <!-- ═══════ Layer 5: Application ═══════ -->
+  <g transform="translate(40, 55)">
+    <rect width="620" height="78" rx="8" fill="url(#l5Grad)" stroke="#667eea" stroke-width="1" stroke-opacity="0.5"/>
+    <!-- Layer label -->
+    <text x="16" y="22" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#667eea" font-weight="600" opacity="0.9">LAYER 5</text>
+    <text x="16" y="40" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#c0c0e0" font-weight="700">Application</text>
+    <!-- Modules -->
+    <g transform="translate(140, 12)">
+      <rect width="100" height="52" rx="6" fill="#667eea" fill-opacity="0.15" stroke="#667eea" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="50" y="23" font-family="'Consolas', monospace" font-size="11" fill="#a0b0ff" text-anchor="middle" font-weight="600">pubsub.py</text>
+      <text x="50" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#8890b0" text-anchor="middle">Pub/Sub</text>
+    </g>
+    <g transform="translate(260, 12)">
+      <rect width="100" height="52" rx="6" fill="#667eea" fill-opacity="0.15" stroke="#667eea" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="50" y="23" font-family="'Consolas', monospace" font-size="11" fill="#a0b0ff" text-anchor="middle" font-weight="600">rpc.py</text>
+      <text x="50" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#8890b0" text-anchor="middle">Remote RPC</text>
+    </g>
+    <g transform="translate(380, 12)">
+      <rect width="100" height="52" rx="6" fill="#667eea" fill-opacity="0.15" stroke="#667eea" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="50" y="23" font-family="'Consolas', monospace" font-size="11" fill="#a0b0ff" text-anchor="middle" font-weight="600">file.py</text>
+      <text x="50" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#8890b0" text-anchor="middle">File Transfer</text>
+    </g>
+    <g transform="translate(500, 12)">
+      <rect width="100" height="52" rx="6" fill="#667eea" fill-opacity="0.15" stroke="#667eea" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="50" y="23" font-family="'Consolas', monospace" font-size="11" fill="#a0b0ff" text-anchor="middle" font-weight="600">diag.py</text>
+      <text x="50" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#8890b0" text-anchor="middle">Diagnostics</text>
+    </g>
+  </g>
+
+  <!-- Arrow down -->
+  <g transform="translate(340, 134)">
+    <line x1="0" y1="0" x2="0" y2="16" stroke="#606080" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <polygon points="-4,14 4,14 0,20" fill="#606080"/>
+  </g>
+
+  <!-- ═══════ Layer 4: Transport ═══════ -->
+  <g transform="translate(40, 150)">
+    <rect width="620" height="78" rx="8" fill="url(#l4Grad)" stroke="#2ecc71" stroke-width="1" stroke-opacity="0.5"/>
+    <text x="16" y="22" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#2ecc71" font-weight="600" opacity="0.9">LAYER 4</text>
+    <text x="16" y="40" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#c0e0c0" font-weight="700">Transport</text>
+    <g transform="translate(140, 12)">
+      <rect width="150" height="52" rx="6" fill="#2ecc71" fill-opacity="0.12" stroke="#2ecc71" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="75" y="23" font-family="'Consolas', monospace" font-size="11" fill="#80d0a0" text-anchor="middle" font-weight="600">transport.py</text>
+      <text x="75" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#80a090" text-anchor="middle">ACK / NACK / Reliable</text>
+    </g>
+    <g transform="translate(310, 12)">
+      <rect width="150" height="52" rx="6" fill="#2ecc71" fill-opacity="0.12" stroke="#2ecc71" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="75" y="23" font-family="'Consolas', monospace" font-size="11" fill="#80d0a0" text-anchor="middle" font-weight="600">packet.py</text>
+      <text x="75" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#80a090" text-anchor="middle">Fragment / Reassemble</text>
+    </g>
+    <g transform="translate(480, 12)">
+      <rect width="100" height="52" rx="6" fill="#2ecc71" fill-opacity="0.12" stroke="#2ecc71" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="50" y="23" font-family="'Consolas', monospace" font-size="11" fill="#80d0a0" text-anchor="middle" font-weight="600">crypto.py</text>
+      <text x="50" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#80a090" text-anchor="middle">AES-128 CTR</text>
+    </g>
+  </g>
+
+  <!-- Arrow down -->
+  <g transform="translate(340, 229)">
+    <line x1="0" y1="0" x2="0" y2="16" stroke="#606080" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <polygon points="-4,14 4,14 0,20" fill="#606080"/>
+  </g>
+
+  <!-- ═══════ Layer 3: Routing ═══════ -->
+  <g transform="translate(40, 245)">
+    <rect width="620" height="78" rx="8" fill="url(#l3Grad)" stroke="#f1c40f" stroke-width="1" stroke-opacity="0.5"/>
+    <text x="16" y="22" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#f1c40f" font-weight="600" opacity="0.9">LAYER 3</text>
+    <text x="16" y="40" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#e0e0c0" font-weight="700">Routing</text>
+    <g transform="translate(140, 12)">
+      <rect width="150" height="52" rx="6" fill="#f1c40f" fill-opacity="0.1" stroke="#f1c40f" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="75" y="23" font-family="'Consolas', monospace" font-size="11" fill="#d0c070" text-anchor="middle" font-weight="600">aodv.py</text>
+      <text x="75" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#a09070" text-anchor="middle">AODV-lite Discovery</text>
+    </g>
+    <g transform="translate(310, 12)">
+      <rect width="150" height="52" rx="6" fill="#f1c40f" fill-opacity="0.1" stroke="#f1c40f" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="75" y="23" font-family="'Consolas', monospace" font-size="11" fill="#d0c070" text-anchor="middle" font-weight="600">routing.py</text>
+      <text x="75" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#a09070" text-anchor="middle">Routing Table</text>
+    </g>
+    <g transform="translate(480, 12)">
+      <rect width="100" height="52" rx="6" fill="#f1c40f" fill-opacity="0.1" stroke="#f1c40f" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="50" y="23" font-family="'Consolas', monospace" font-size="11" fill="#d0c070" text-anchor="middle" font-weight="600">forward.py</text>
+      <text x="50" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#a09070" text-anchor="middle">Forwarding</text>
+    </g>
+  </g>
+
+  <!-- Arrow down -->
+  <g transform="translate(340, 324)">
+    <line x1="0" y1="0" x2="0" y2="16" stroke="#606080" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <polygon points="-4,14 4,14 0,20" fill="#606080"/>
+  </g>
+
+  <!-- ═══════ Layer 2: Infrastructure ═══════ -->
+  <g transform="translate(40, 340)">
+    <rect width="620" height="78" rx="8" fill="url(#l2Grad)" stroke="#e67e22" stroke-width="1" stroke-opacity="0.5"/>
+    <text x="16" y="22" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#e67e22" font-weight="600" opacity="0.9">LAYER 2</text>
+    <text x="16" y="40" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#e0d0c0" font-weight="700">Infrastructure</text>
+    <g transform="translate(140, 12)">
+      <rect width="120" height="52" rx="6" fill="#e67e22" fill-opacity="0.12" stroke="#e67e22" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="60" y="23" font-family="'Consolas', monospace" font-size="11" fill="#d0a070" text-anchor="middle" font-weight="600">peer.py</text>
+      <text x="60" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#a08060" text-anchor="middle">Peer Manager</text>
+    </g>
+    <g transform="translate(280, 12)">
+      <rect width="120" height="52" rx="6" fill="#e67e22" fill-opacity="0.12" stroke="#e67e22" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="60" y="23" font-family="'Consolas', monospace" font-size="11" fill="#d0a070" text-anchor="middle" font-weight="600">neighbor.py</text>
+      <text x="60" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#a08060" text-anchor="middle">Neighbor Table</text>
+    </g>
+    <g transform="translate(420, 12)">
+      <rect width="120" height="52" rx="6" fill="#e67e22" fill-opacity="0.12" stroke="#e67e22" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="60" y="23" font-family="'Consolas', monospace" font-size="11" fill="#d0a070" text-anchor="middle" font-weight="600">duplicate.py</text>
+      <text x="60" y="40" font-family="'Segoe UI', sans-serif" font-size="9" fill="#a08060" text-anchor="middle">Dedup Filter</text>
+    </g>
+  </g>
+
+  <!-- Arrow down -->
+  <g transform="translate(340, 419)">
+    <line x1="0" y1="0" x2="0" y2="16" stroke="#606080" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <polygon points="-4,14 4,14 0,20" fill="#606080"/>
+  </g>
+
+  <!-- ═══════ Layer 1: Physical ═══════ -->
+  <g transform="translate(40, 435)">
+    <rect width="620" height="68" rx="8" fill="url(#l1Grad)" stroke="#e74c3c" stroke-width="1" stroke-opacity="0.5"/>
+    <text x="16" y="22" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#e74c3c" font-weight="600" opacity="0.9">LAYER 1</text>
+    <text x="16" y="40" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#e0c0c0" font-weight="700">Physical</text>
+    <g transform="translate(140, 8)">
+      <rect width="180" height="48" rx="6" fill="#e74c3c" fill-opacity="0.12" stroke="#e74c3c" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="90" y="21" font-family="'Consolas', monospace" font-size="11" fill="#d08080" text-anchor="middle" font-weight="600">adapter.py</text>
+      <text x="90" y="38" font-family="'Segoe UI', sans-serif" font-size="9" fill="#a07070" text-anchor="middle">ESP-NOW + Long Range</text>
+    </g>
+    <g transform="translate(340, 8)">
+      <rect width="180" height="48" rx="6" fill="#e74c3c" fill-opacity="0.12" stroke="#e74c3c" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="90" y="21" font-family="'Consolas', monospace" font-size="11" fill="#d08080" text-anchor="middle" font-weight="600">_fast.py</text>
+      <text x="90" y="38" font-family="'Segoe UI', sans-serif" font-size="9" fill="#a07070" text-anchor="middle">Viper/Native Optimized</text>
+    </g>
+  </g>
+
+  <!-- Side labels: mesh.py orchestrator -->
+  <g transform="translate(678, 55)">
+    <rect width="2" height="448" rx="1" fill="url(#l5Grad)" opacity="0.4"/>
+  </g>
+  <text x="695" y="285" font-family="'Consolas', monospace" font-size="10" fill="#8888aa" transform="rotate(90, 695, 285)" text-anchor="middle" opacity="0.7">mesh.py (orchestrator)</text>
+</svg>

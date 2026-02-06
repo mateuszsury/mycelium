@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29"/>
+      <stop offset="50%" style="stop-color:#302b63"/>
+      <stop offset="100%" style="stop-color:#24243e"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#43e97b"/>
+    </linearGradient>
+    <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#43e97b;stop-opacity:0.8"/>
+    </linearGradient>
+    <linearGradient id="lineGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#43e97b;stop-opacity:0.5"/>
+    </linearGradient>
+    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#667eea;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="248" fill="url(#bgGrad)" stroke="url(#nodeGrad)" stroke-width="2" opacity="0.95"/>
+
+  <!-- Ambient glow -->
+  <circle cx="256" cy="256" r="180" fill="url(#glowGrad)"/>
+
+  <!-- Network connections (organic mycelium paths) -->
+  <g filter="url(#glow)" fill="none" stroke-linecap="round">
+    <!-- Primary connections -->
+    <path d="M256 180 Q280 220 256 256" stroke="url(#lineGrad1)" stroke-width="2.5"/>
+    <path d="M256 256 Q230 290 200 330" stroke="url(#lineGrad1)" stroke-width="2.5"/>
+    <path d="M256 256 Q290 290 320 330" stroke="url(#lineGrad1)" stroke-width="2.5"/>
+    <path d="M256 256 Q200 240 150 220" stroke="url(#lineGrad1)" stroke-width="2.5"/>
+    <path d="M256 256 Q310 240 370 230" stroke="url(#lineGrad1)" stroke-width="2.5"/>
+
+    <!-- Secondary branches -->
+    <path d="M150 220 Q130 180 120 150" stroke="url(#lineGrad2)" stroke-width="1.8"/>
+    <path d="M150 220 Q120 240 100 270" stroke="url(#lineGrad2)" stroke-width="1.8"/>
+    <path d="M370 230 Q390 200 400 170" stroke="url(#lineGrad2)" stroke-width="1.8"/>
+    <path d="M370 230 Q400 250 410 280" stroke="url(#lineGrad2)" stroke-width="1.8"/>
+    <path d="M200 330 Q170 350 140 360" stroke="url(#lineGrad2)" stroke-width="1.8"/>
+    <path d="M200 330 Q210 360 220 390" stroke="url(#lineGrad2)" stroke-width="1.8"/>
+    <path d="M320 330 Q350 350 380 360" stroke="url(#lineGrad2)" stroke-width="1.8"/>
+    <path d="M320 330 Q310 360 300 390" stroke="url(#lineGrad2)" stroke-width="1.8"/>
+    <path d="M256 180 Q220 160 190 140" stroke="url(#lineGrad2)" stroke-width="1.8"/>
+    <path d="M256 180 Q290 160 320 140" stroke="url(#lineGrad2)" stroke-width="1.8"/>
+
+    <!-- Tertiary fine branches -->
+    <path d="M120 150 Q100 130 85 115" stroke="url(#lineGrad2)" stroke-width="1"/>
+    <path d="M120 150 Q140 130 155 115" stroke="url(#lineGrad2)" stroke-width="1"/>
+    <path d="M400 170 Q415 150 425 130" stroke="url(#lineGrad2)" stroke-width="1"/>
+    <path d="M100 270 Q80 285 70 305" stroke="url(#lineGrad2)" stroke-width="1"/>
+    <path d="M410 280 Q425 295 435 310" stroke="url(#lineGrad2)" stroke-width="1"/>
+    <path d="M140 360 Q120 370 105 385" stroke="url(#lineGrad2)" stroke-width="1"/>
+    <path d="M380 360 Q395 370 410 385" stroke="url(#lineGrad2)" stroke-width="1"/>
+    <path d="M220 390 Q215 405 210 420" stroke="url(#lineGrad2)" stroke-width="1"/>
+    <path d="M300 390 Q305 405 310 420" stroke="url(#lineGrad2)" stroke-width="1"/>
+    <path d="M190 140 Q175 125 165 110" stroke="url(#lineGrad2)" stroke-width="1"/>
+    <path d="M320 140 Q335 125 350 110" stroke="url(#lineGrad2)" stroke-width="1"/>
+  </g>
+
+  <!-- Network nodes -->
+  <g filter="url(#glow)">
+    <!-- Central node (largest) -->
+    <circle cx="256" cy="256" r="12" fill="url(#nodeGrad)"/>
+    <circle cx="256" cy="256" r="6" fill="#fff" opacity="0.9"/>
+
+    <!-- Primary nodes -->
+    <circle cx="256" cy="180" r="8" fill="url(#nodeGrad)"/>
+    <circle cx="256" cy="180" r="4" fill="#fff" opacity="0.8"/>
+
+    <circle cx="150" cy="220" r="8" fill="url(#nodeGrad)"/>
+    <circle cx="150" cy="220" r="4" fill="#fff" opacity="0.8"/>
+
+    <circle cx="370" cy="230" r="8" fill="url(#nodeGrad)"/>
+    <circle cx="370" cy="230" r="4" fill="#fff" opacity="0.8"/>
+
+    <circle cx="200" cy="330" r="8" fill="url(#nodeGrad)"/>
+    <circle cx="200" cy="330" r="4" fill="#fff" opacity="0.8"/>
+
+    <circle cx="320" cy="330" r="8" fill="url(#nodeGrad)"/>
+    <circle cx="320" cy="330" r="4" fill="#fff" opacity="0.8"/>
+
+    <!-- Secondary nodes -->
+    <circle cx="120" cy="150" r="5" fill="url(#nodeGrad)" opacity="0.85"/>
+    <circle cx="100" cy="270" r="5" fill="url(#nodeGrad)" opacity="0.85"/>
+    <circle cx="400" cy="170" r="5" fill="url(#nodeGrad)" opacity="0.85"/>
+    <circle cx="410" cy="280" r="5" fill="url(#nodeGrad)" opacity="0.85"/>
+    <circle cx="140" cy="360" r="5" fill="url(#nodeGrad)" opacity="0.85"/>
+    <circle cx="220" cy="390" r="5" fill="url(#nodeGrad)" opacity="0.85"/>
+    <circle cx="380" cy="360" r="5" fill="url(#nodeGrad)" opacity="0.85"/>
+    <circle cx="300" cy="390" r="5" fill="url(#nodeGrad)" opacity="0.85"/>
+    <circle cx="190" cy="140" r="5" fill="url(#nodeGrad)" opacity="0.85"/>
+    <circle cx="320" cy="140" r="5" fill="url(#nodeGrad)" opacity="0.85"/>
+
+    <!-- Tertiary nodes (smallest) -->
+    <circle cx="85" cy="115" r="3" fill="url(#nodeGrad)" opacity="0.6"/>
+    <circle cx="155" cy="115" r="3" fill="url(#nodeGrad)" opacity="0.6"/>
+    <circle cx="425" cy="130" r="3" fill="url(#nodeGrad)" opacity="0.6"/>
+    <circle cx="70" cy="305" r="3" fill="url(#nodeGrad)" opacity="0.6"/>
+    <circle cx="435" cy="310" r="3" fill="url(#nodeGrad)" opacity="0.6"/>
+    <circle cx="105" cy="385" r="3" fill="url(#nodeGrad)" opacity="0.6"/>
+    <circle cx="410" cy="385" r="3" fill="url(#nodeGrad)" opacity="0.6"/>
+    <circle cx="210" cy="420" r="3" fill="url(#nodeGrad)" opacity="0.6"/>
+    <circle cx="310" cy="420" r="3" fill="url(#nodeGrad)" opacity="0.6"/>
+    <circle cx="165" cy="110" r="3" fill="url(#nodeGrad)" opacity="0.6"/>
+    <circle cx="350" cy="110" r="3" fill="url(#nodeGrad)" opacity="0.6"/>
+  </g>
+</svg>

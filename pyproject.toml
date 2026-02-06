@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "umesh"
+version = "0.1.0"
+description = "MicroPython ESP-NOW mesh networking for ESP32"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.9"
+authors = [{name = "Mateusz Sury"}]
+keywords = ["micropython", "esp32", "esp-now", "mesh", "networking", "iot", "aodv", "routing", "embedded"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: Implementation :: MicroPython",
+    "Topic :: System :: Networking",
+]
+
+[project.urls]
+Homepage = "https://github.com/mateuszsury/mycelium"
+Repository = "https://github.com/mateuszsury/mycelium"
+Issues = "https://github.com/mateuszsury/mycelium/issues"
+Changelog = "https://github.com/mateuszsury/mycelium/blob/main/CHANGELOG.md"
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "umesh"]
+python_files = ["test_*.py"]
+
+[tool.setuptools.packages.find]
+include = ["umesh*"]
