@@ -23,12 +23,18 @@ ticks_diff = lambda a, b: a - b
 # MOCK MESH INSTANCE
 # =============================================================================
 
+class MockNeighborTable(dict):
+    def get_neighbor(self, node_id):
+        neighbor = self.get(node_id)
+        return None if neighbor is None else {'lqi': neighbor.lqi, 'node_id': neighbor.node_id}
+
+
 class MockMesh:
     """Mock Mesh instance for testing."""
 
     def __init__(self, node_id):
         self.node_id = node_id
-        self._neighbors = {}  # node_id -> MockNeighbor
+        self._neighbors = MockNeighborTable()  # node_id -> MockNeighbor
         self._sent_packets = []  # Track sent packets
 
     async def _send_packet(self, pkt_type, dest_id, dest_mac, payload, ttl, hop_count):
@@ -319,7 +325,7 @@ async def test_route_discovery_handle_rreq_destination():
     }
 
     # Handle RREQ
-    rd.handle_rreq(b'\x01' * 6, header, payload, rssi=-50)
+    await rd.handle_rreq(b'\x01' * 6, header, payload, rssi=-50)
 
     # Should create reverse route
     reverse = rt.lookup(0x1000)
@@ -374,7 +380,7 @@ async def test_route_discovery_handle_rrep_originator():
     }
 
     # Handle RREP
-    rd.handle_rrep(b'\x01' * 6, header, payload, rssi=-60)
+    await rd.handle_rrep(b'\x01' * 6, header, payload, rssi=-60)
 
     # Should create forward route
     forward = rt.lookup(0x2000)

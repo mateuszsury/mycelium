@@ -373,9 +373,8 @@ class FileTransfer:
         # Calculate CRC32
         checksum = crc32(data) & 0xFFFFFFFF
 
-        # Send FILE_END
-        await self._send_file_end(dest_id, transfer_id, checksum)
-
+        # Register the waiter before sending FILE_END: an in-process or fast
+        # peer may acknowledge synchronously during send_raw().
         # Wait for ACK
         ack_event = asyncio.Event()
         self._pending_send[transfer_id] = {
@@ -385,6 +384,7 @@ class FileTransfer:
         }
 
         try:
+            await self._send_file_end(dest_id, transfer_id, checksum)
             await asyncio.wait_for(
                 ack_event.wait(),
                 self.TRANSFER_TIMEOUT / 1000.0

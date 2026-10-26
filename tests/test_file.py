@@ -626,45 +626,31 @@ def test_crc32():
 
 @pytest.mark.asyncio
 async def test_full_transfer_cycle():
-    """Test complete send/receive cycle."""
-    # Sender mesh
+    """Deliver packets while the sender is awaiting the receiver's ACK."""
+    from umesh.packet import PacketCodec
     sender_mesh = MockMesh(node_id=0x1111)
-    sender_ft = FileTransfer(sender_mesh)
-
-    # Receiver mesh
     receiver_mesh = MockMesh(node_id=0x2222)
+    sender_ft = FileTransfer(sender_mesh)
     receiver_ft = FileTransfer(receiver_mesh)
+    codec = PacketCodec()
 
-    # File to transfer
-    filename = "test.bin"
-    file_data = b'A' * 500  # Multi-chunk file
+    async def deliver_to_receiver(packet, dest_mac=None):
+        sender_mesh.sent_packets.append(packet)
+        parsed = codec.decode(packet)
+        receiver_ft.handle_file_packet(0x1111, parsed['payload'])
 
-    # Track received
+    async def deliver_ack(packet, dest_mac=None):
+        receiver_mesh.sent_packets.append(packet)
+        parsed = codec.decode(packet)
+        sender_ft.handle_file_packet(0x2222, parsed['payload'])
+
+    sender_mesh.send_raw = deliver_to_receiver
+    receiver_mesh.send_raw = deliver_ack
     received = []
-    receiver_ft.on_file_received(
-        lambda src, name, data: received.append((src, name, data))
-    )
-
-    # Send file
-    await sender_ft.send_file(0x2222, filename, file_data)
-
-    # Extract packets and replay to receiver
-    for pkt in sender_mesh.sent_packets:
-        # Decode packet to extract payload
-        # For this test, we need to parse the packet
-        from umesh.packet import PacketCodec
-        codec = PacketCodec()
-        parsed = codec.decode(pkt)
-
-        if parsed['pkt_type'] == PKT_CTRL:
-            # Forward to receiver
-            receiver_ft.handle_file_packet(0x1111, parsed['payload'])
-
-    # Check file received
-    assert len(received) == 1
-    assert received[0][0] == 0x1111  # src_id
-    assert received[0][1] == filename
-    assert received[0][2] == file_data
+    receiver_ft.on_file_received(lambda src, name, data: received.append((src, name, data)))
+    payload = b'A' * 500
+    assert await sender_ft.send_file(0x2222, 'test.bin', payload)
+    assert received == [(0x1111, 'test.bin', payload)]
 
 
 if __name__ == '__main__':

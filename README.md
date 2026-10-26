@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <b>Production-ready mesh networking for ESP32 MicroPython devices.</b><br>
+  <b>Experimental mesh networking for ESP32 MicroPython devices (Alpha).</b><br>
   Complete 5-layer protocol stack over ESP-NOW. Zero dependencies. ~18 KB RAM.
 </p>
 
@@ -314,3 +314,10 @@ This project is licensed under the Apache License 2.0 — see the [LICENSE](LICE
 - [ESP-NOW](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html) by Espressif Systems
 - [MicroPython](https://micropython.org/) project
 - [AODV](https://www.rfc-editor.org/rfc/rfc3561) (RFC 3561) — inspiration for the routing protocol
+
+## Reproducible host checks
+
+Install `python -m pip install -e ".[dev]"`, then run `python -m pytest -q`.
+Host tests use a test-only AES-ECB adapter backed by cryptography, checked against
+a NIST vector. It is not deployed to MicroPython and does not replace device
+validation. The runtime still refuses encryption without its AES backend.

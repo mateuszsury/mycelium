@@ -13,7 +13,7 @@ by ucryptolib (built into MicroPython ESP32).
 Security properties:
 - AES-128 with 16-byte Pre-Shared Key (PSK)
 - CTR mode for stream cipher operation (no padding needed)
-- Unique nonce per packet: node_id + pkt_id + random(4B)
+- Unique nonce per packet: node_id + random(6B)
 - 8-byte overhead per encrypted packet
 
 Memory usage:
@@ -32,10 +32,10 @@ try:
     from ucryptolib import aes
     UCRYPTOLIB_AVAILABLE = True
 except ImportError:
-    # Fallback for desktop Python (testing only - NOT SECURE)
+    # Encryption remains unavailable when no AES backend is present.
     UCRYPTOLIB_AVAILABLE = False
     import warnings
-    warnings.warn("ucryptolib not available - using insecure fallback for testing")
+    warnings.warn("ucryptolib not available; encryption will raise until an AES backend is supplied")
 
 try:
     import os
@@ -54,7 +54,7 @@ except ImportError:
 
 
 # Encryption constants
-NONCE_SIZE = const(8)         # Bytes: node_id(2) + pkt_id(2) + random(4)
+NONCE_SIZE = const(8)         # Bytes: node_id(2) + random(6)
 KEY_SIZE = const(16)          # AES-128 key size
 BLOCK_SIZE = const(16)        # AES block size
 
@@ -104,13 +104,12 @@ class MeshCrypto:
 
         Nonce construction (8 bytes):
         - Bytes 0-1: node_id (big-endian uint16)
-        - Bytes 2-3: pkt_id (big-endian uint16)
-        - Bytes 4-7: random bytes from os.urandom
+        - Bytes 2-7: six random bytes from os.urandom
 
         Args:
             data: Plaintext to encrypt
             node_id: 16-bit source node ID (for nonce uniqueness)
-            pkt_id: 16-bit packet ID (for nonce uniqueness)
+            pkt_id: validated legacy packet identifier; not encoded in the nonce
 
         Returns:
             Encrypted payload: nonce (8 bytes) + ciphertext
