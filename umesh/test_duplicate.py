@@ -12,7 +12,7 @@ except ImportError:
     def sleep_ms(ms):
         sleep(ms / 1000.0)
 
-from duplicate import DuplicateFilter, WINDOW_SIZE, MAX_SOURCES
+from umesh.duplicate import DuplicateFilter, WINDOW_SIZE, MAX_SOURCES
 
 
 def test_basic_duplicate_detection():

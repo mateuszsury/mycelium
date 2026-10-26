@@ -105,21 +105,21 @@ class PubSub:
         Args:
             coro: Coroutine to schedule
         """
+        scheduled = False
         try:
-            # Prefer get_running_loop() (Python 3.7+, CPython)
             try:
                 loop = asyncio.get_running_loop()
             except (RuntimeError, AttributeError):
-                # MicroPython or no running loop
-                try:
-                    loop = asyncio.get_event_loop()
-                    if not loop.is_running():
-                        return
-                except RuntimeError:
+                loop = asyncio.get_event_loop()
+                if hasattr(loop, 'is_running') and not loop.is_running():
                     return
             asyncio.create_task(coro)
-        except Exception:
+            scheduled = True
+        except RuntimeError:
             pass
+        finally:
+            if not scheduled and hasattr(coro, 'close'):
+                coro.close()
 
     def subscribe(self, topic: str, callback):
         """

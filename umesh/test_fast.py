@@ -11,35 +11,10 @@ import os
 # Add parent directory to path to allow importing umesh
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Import directly from _fast module to avoid adapter dependencies
-if os.path.exists(os.path.join(os.path.dirname(__file__), '_fast.py')):
-    # Running from umesh directory
-    from _fast import (
-        dup_check,
-        crc8,
-        parse_header,
-        build_header,
-        rssi_ewma,
-        route_lookup,
-        calc_lqi,
-        accumulate_metric,
-        VIPER_AVAILABLE,
-        get_optimization_info,
-    )
-else:
-    # Running from elsewhere
-    from umesh._fast import (
-        dup_check,
-        crc8,
-        parse_header,
-        build_header,
-        rssi_ewma,
-        route_lookup,
-        calc_lqi,
-        accumulate_metric,
-        VIPER_AVAILABLE,
-        get_optimization_info,
-    )
+from umesh._fast import (
+    dup_check, crc8, parse_header, build_header, rssi_ewma, route_lookup,
+    calc_lqi, accumulate_metric, VIPER_AVAILABLE, get_optimization_info,
+)
 
 
 def test_crc8():

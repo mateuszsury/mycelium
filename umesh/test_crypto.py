@@ -220,8 +220,9 @@ def test_nonce_format():
     # Check nonce structure
     assert len(nonce) == 8
     assert nonce[0:2] == node_id.to_bytes(2, 'big'), "Nonce bytes 0-1 should be node_id"
-    assert nonce[2:4] == pkt_id.to_bytes(2, 'big'), "Nonce bytes 2-3 should be pkt_id"
-    # Bytes 4-7 are random, can't verify
+    # Bytes 2-7 are random and intentionally no longer encode the packet ID.
+    second = crypto.encrypt(data, node_id=node_id, pkt_id=pkt_id)[:NONCE_SIZE]
+    assert nonce[2:8] != second[2:8], "Separate packets need independently sampled nonces"
 
     print("[PASS] Nonce format correct")
 

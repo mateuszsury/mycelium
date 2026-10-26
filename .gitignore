@@ -63,3 +63,6 @@ umesh/AODV_README.md
 umesh/RPC_README.md
 umesh/CRYPTO_README.md
 umesh/utils_README.md
+
+# Generated development files
+.ruff_cache/

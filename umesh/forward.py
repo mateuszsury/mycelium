@@ -165,8 +165,12 @@ class ForwardingEngine:
             await self._deliver_local(parsed, from_mac)
 
             # Rebroadcast with jitter to prevent collision
-            await self._rebroadcast(raw, parsed, new_ttl, new_hop_count)
+            if new_ttl > 0:
+                await self._rebroadcast(raw, parsed, new_ttl, new_hop_count)
             return True
+
+        if new_ttl == 0:
+            return False
 
         # Unicast packet - need routing
         if self._routes is None:
