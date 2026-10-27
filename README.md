@@ -1,3 +1,5 @@
+# Mycelium — ESP-NOW mesh for MicroPython
+
 <p align="center">
   <img src="assets/banner.svg" alt="Mycelium" width="800">
 </p>
@@ -16,6 +18,14 @@
 </p>
 
 ---
+
+## Project overview
+
+An experimental MicroPython ESP-NOW mesh with routing, messaging and RPC.
+
+![Mycelium — Alpha architecture. Host cryptography and transfer tests do not replace multi-device RF validation.](docs/assets/presentation/overview.svg)
+
+Alpha architecture. Host cryptography and transfer tests do not replace multi-device RF validation.
 
 ## Why Mycelium?
 
